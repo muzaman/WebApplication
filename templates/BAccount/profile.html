@@ -1,0 +1,12 @@
+{% extends 'BAccount/layout/basic.html' %}
+{% block title %}
+    Фойдаланувчи профили
+{% endblock %}
+{% block content %}
+    <h2>{{ user.username }}Фойдаланувчи профили</h2>
+    {% if user.first_name and user.last_name %}
+        <p> Ассалому алайкум, {{ user.first_name }} {{ user.last_name }} </p>
+    {% else %}
+        <p> Ассалому алайкум!</p>
+    {% endif %}
+{% endblock %}

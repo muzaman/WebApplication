@@ -1,0 +1,14 @@
+{% extends 'BAccount/layout/basic.html' %}
+{% block title %}
+    Фойдаланувчи аллақачон фаоллаштирилган
+{% endblock %}
+{% block content %}
+    <h2>Фаоллаштириш</h2>
+    <p>
+        Бу номли фойдаланувчи аввалроқ фаоллаштирилган.
+    </p>
+    <p>
+        <a href="{% url 'BAccount:login' %}">Сайтга кириш</a>
+    </p>
+
+{% endblock %}

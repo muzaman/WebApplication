@@ -1,0 +1,14 @@
+{% extends 'BAccount/layout/basic.html' %}
+{% load bootstrap4 %}
+{% block title %}
+    Фойдаланувчини ўчириш
+{% endblock %}
+
+{% block content %}
+    <h2> "{{ object.username }}" Фойдаланувчини ўчириш </h2>
+    <form method="post">
+        {% csrf_token %}
+        {% buttons submit='Ўчириш' %} {% endbuttons %}
+    </form>
+{% endblock %}
+

@@ -38,7 +38,7 @@ class NonactivatedFilter(admin.SimpleListFilter):
             d = datetime.date.today() - datetime.timedelta(weeks=1)
             return queryset.filter(
                 is_active=False, is_activated=False,
-                date__oined__date__lt=d)
+                date_joined__date__lt=d)
 
 
 class AdvUserAdmin(admin.ModelAdmin):
@@ -47,7 +47,7 @@ class AdvUserAdmin(admin.ModelAdmin):
     list_filter = (NonactivatedFilter,)
     fields = (('username', 'email'), ('first_name', 'last_name'),
               ('send_messages', 'is_active', 'is_activated'),
-              ('is_stuff', 'is_superuser'),
+              'is_superuser',
               'groups', 'user_permissions',
               ('last_login', 'date_joined'))
     readonly_fields = ('last_login', 'date_joined')

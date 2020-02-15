@@ -16,27 +16,35 @@
 </head>
 <body class="container-fluid">
 <header class="mb-4">
-    <h2 class="display-1 text-center">Tillayev Technology LAB</h2>
+    <h2 class="display-1 text-right">Тадбиркор хисобчиси </h2>
     {% if user.is_authenticated %}
-        <p>{{ user.first_name }} {{ user.last_name }} </p>
+        <p>{{ user.first_name }} {{ user.last_name }} {{ user.owner_company_id }} </p>
     {% endif %}
-</header>
-<div class="row">
-    <ul class="col nav justify-content-end border">
 
 
-        {% if user.is_authenticated %}
-            <li class="nav-item"><a href="{% url 'BAccount:register' %}" class="nav-link">Регистрация</a></li>
+    <div class="row">
+        <ul class="col nav justify-content-end border">
             <li class="nav-item dropdown">
                 <a href="{% url 'BAccount:profile' %}" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    role="button"
-                   aria-haspopup="true" aria-expanded="false">Профиль</a>
-                <div class="dropdown-menu">
-                    <a href="{% url 'BAccount:profile_change' %}" class="dropdown-item">
-                        Ўзгартириш</a>
-                    <a href="{% url 'BAccount:password_change' %}" class="dropdown-item">Паролни ўзгартириш</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{% url 'BAccount:profile_delete' %}" class="dropdown-item">Профилни ўчириш</a>
+                   aria-haspopup="true" aria-expanded="false">Хужжат</a>
+            </li>
+
+            {% if not user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'BAccount:register' %}" class="nav-link">Регистрация</a></li>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a href="{% url 'BAccount:profile' %}" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       role="button"
+                       aria-haspopup="true" aria-expanded="false">Профиль</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'BAccount:profile_change' %}" class="dropdown-item">
+                            Ўзгартириш</a>
+                        <a href="{% url 'BAccount:password_change' %}" class="dropdown-item">Паролни ўзгартириш</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'BAccount:profile_delete' %}" class="dropdown-item">Профилни ўчириш</a>
                     <a href="{% url 'BAccount:logout' %}" class="dropdown-item">Чиқиш({{ user.username }})</a>
                 </div>
             </li>
@@ -44,8 +52,9 @@
             <li class="nav-item"><a href="{% url 'BAccount:login' %}" class="nav-link">Кириш</a></li>
         {% endif %}
 
-    </ul>
-</div>
+        </ul>
+    </div>
+</header>
 <div class="row">
     <nav class="col-md-auto nav flex-column border">
         <a href="#" class="nav-link root">Бош сахифа</a>
